@@ -4,6 +4,7 @@ import axios from 'axios';
 interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string) => Promise<void>;
+  logout: () => void;
   isAuthenticated: boolean;
   username: string | null;
 }
@@ -47,9 +48,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       console.error('Error en la petición:', error);
     }
   };
-
+  const logout = () => {
+    console.log('Logout');
+    setIsAuthenticated(false);
+    setUsername(null);
+  };
   return (
-    <AuthContext.Provider value={{ login, register, isAuthenticated, username }}>
+    <AuthContext.Provider value={{ login, register, logout,isAuthenticated, username }}>
       {children}
     </AuthContext.Provider>
   );
