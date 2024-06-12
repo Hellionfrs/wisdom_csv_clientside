@@ -8,6 +8,7 @@ import { AvatarFallback } from '@radix-ui/react-avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Link } from 'react-router-dom';
 
 const schema = z.object({
   email: z.string().email({ message: 'Email inválido' }),
@@ -36,7 +37,7 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen rounded-lg shadow-md m-16">
+    <div className="flex h-[720px] rounded-lg shadow-md m-16">
       <div className="w-1/2 flex flex-col justify-center items-center">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md p-8 space-y-4 bg-white">
           <h2 className="text-2xl font-bold text-center">Crea tu usuario</h2>
@@ -57,6 +58,7 @@ const RegisterPage: React.FC = () => {
           </div>
           <Button type="submit" className="p-2 w-full">Registrar</Button>
         </form>
+        <small>¿Ya tienes cuenta? <Link to="/login" className='text-blue-500 hover:border-b border-b-blue-500'>Iniciar Sesión ahora</Link></small>
       </div>
       <div className="w-1/2 flex flex-col gap-4 bg-blue-600 justify-between rounded-r-lg text-white">
         <header className='flex gap-2 p-4 self-end'>
